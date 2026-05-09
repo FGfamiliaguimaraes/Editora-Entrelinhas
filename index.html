@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editora Entrelinhas | Livros que Transformam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #d4af37;
+            --bg: #ffffff;
+            --text: #333;
+            --gray: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+        }
+
+        .main-header {
+            padding: 60px 20px;
+        }
+
+        .main-header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 6rem;
+            margin: 0;
+            color: var(--accent);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            padding: 20px 10px;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            margin: 0;
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .grid-livros {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .book-card {
+            width: 280px;
+            border: 1px solid #eee;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .cover-img {
+            width: 100%;
+            height: 380px;
+            object-fit: contain;
+            background: var(--gray);
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Nova fonte para os títulos dos livros */
+        .book-title { 
+            font-family: 'Playfair Display', serif;
+            font-weight: bold; 
+            margin: 10px 0; 
+            font-size: 1.1rem;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .author-name { 
+            font-family: 'Great Vibes', cursive;
+            color: var(--accent); 
+            font-size: 1.8rem;
+            margin-bottom: 5px; 
+            display: block;
+        }
+
+        .btn-details {
+            background: var(--primary);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-details:hover { background: var(--accent); }
+
+        #detailsPage {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: white;
+            z-index: 9999;
+            overflow-y: auto;
+        }
+
+        .details-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            padding: 0 20px 60px 20px;
+        }
+
+        .back-btn {
+            background: #f0f0f0;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .back-btn:hover { background: #e0e0e0; }
+
+        .points-box {
+            background: var(--gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            border-left: 5px solid var(--accent);
+        }
+
+        .external-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 35px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .external-link:hover { background-color: #b8962d; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Editora Entrelinhas</h1>
+        <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; opacity: 0.8;">Curadoria exclusiva para sua evolução</p>
+    </header>
+
+    <div class="container">
+        <div class="grid-livros">
+            <div class="book-card">
+                <img src="image_5a4194.png" class="cover-img">
+                <span class="author-name">Simon Sinek</span>
+                <div class="book-title">Comece pelo porquê</div>
+                <button class="btn-details" onclick="openDetails(0)">VER DETALHES</button>
+            </div>
+
+            <div class="book-card">
+                <img src="download (2).jpg" class="cover-img">
+                <span class="author-name">Luciano Santos</span>
+                <div class="book-title">Seja egoísta com sua carreira</div>
+                <button class="btn-details" onclick="openDetails(1)">VER DETALHES</button>
+            </div>
+
+            <div class="book-card">
+                <img src="download (1).jpg" class="cover-img">
+                <span class="author-name">Richard Davis</span>
+                <div class="book-title">A ciência das boas decisões</div>
+                <button class="btn-details" onclick="openDetails(2)">VER DETALHES</button>
+            </div>
+
+            <div class="book-card">
+                <img src="download.jpg" class="cover-img">
+                <span class="author-name">Michael J. Losier</span>
+                <div class="book-title">A Lei da Atração</div>
+                <button class="btn-details" onclick="openDetails(3)">VER DETALHES</button>
+            </div>
+
+            <div class="book-card">
+                <img src="images.webp" class="cover-img">
+                <span class="author-name">Shirzad Chamine</span>
+                <div class="book-title">Inteligência Positiva</div>
+                <button class="btn-details" onclick="openDetails(4)">VER DETALHES</button>
+            </div>
+
+            <div class="book-card">
+                <img src="images (2).jpg" class="cover-img">
+                <span class="author-name">Caroline Fleck</span>
+                <div class="book-title">Validação: A Nova Psicologia da Influência</div>
+                <button class="btn-details" onclick="openDetails(5)">VER DETALHES</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="detailsPage">
+        <header class="modal-header">
+            <h2>Editora Entrelinhas</h2>
+        </header>
+
+        <div class="container" style="margin-top: 0;">
+            <button class="back-btn" onclick="closeDetails()">← VOLTAR PARA O CATÁLOGO</button>
+            
+            <div class="details-container">
+                <img id="detImg" src="" style="width: 320px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                <div style="flex: 1; min-width: 300px;">
+                    <h1 id="detTitle" style="font-family: 'Playfair Display', serif; margin-top: 0; font-size: 2.2rem;"></h1>
+                    <p id="detAuthor" class="author-name" style="font-size: 2.8rem; margin: 10px 0;"></p>
+                    <p id="detDesc" style="font-size: 1.1rem; color: #555; text-align: justify;"></p>
+                    <div class="points-box">
+                        <strong>Destaques do Conteúdo:</strong>
+                        <ul id="detPoints" style="margin-top: 15px; padding-left: 20px;"></ul>
+                    </div>
+                    <a id="detLink" href="#" target="_blank" class="external-link">MAIS INFORMAÇÕES / COMPRAR</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const info = [
+            { 
+                t: "Comece pelo porquê", 
+                a: "Simon Sinek", 
+                d: "O livro 'Comece pelo Porquê' (Start with Why), de Simon Sinek, fala sobre a importância de ter um propósito claro (o 'porquê') para inspirar pessoas, engajar equipes e construir negócios duradouros. Sinek argumenta que líderes influentes comunicam-se de dentro para fora, focando no porquê antes do como e do quê.", 
+                p: ["Círculo Dourado", "Liderança Inspiradora", "Propósito de Negócio"], 
+                i: "image_5a4194.png",
+                link: "https://www.google.com/search?sca_esv=4b887b8b05c5a0ea&sxsrf=ANbL-n55vkitZWeOxxD45XgEACwwwTtogA:1778327543813&udm=28&q=comece+pelo+porque+livro" 
+            },
+            { 
+                t: "Seja egoísta com sua carreira", 
+                a: "Luciano Santos", 
+                d: "O livro 'Seja Egoísta com Sua Carreir', de Luciano Santos, defende que você deve priorizar o seu crescimento, necessidades e felicidade profissional em vez de se dedicar exclusivamente a uma empresa. A obra ensina a assumir o controle da sua jornada, construir um plano B, desenvolver o networking e gerenciar o próprio líder.", 
+                p: ["Protagonismo Profissional", "Networking Estratégico", "Gestão de Carreira"], 
+                i: "download (2).jpg",
+                link: "https://www.google.com/search?q=seja+egoista+com+sua+carreira&udm=28" 
+            },
+            { 
+                t: "A ciência das boas decisões", 
+                a: "Richard Davis", 
+                d: "O livro 'A Ciência das Boas Decisões', de Richard Davis, é um guia sobre como utilizar a ciência da personalidade para tomar melhores decisões, especialmente no ambiente de negócios e liderança. O autor apresenta um método para interpretar pessoas, contratar melhor, resolver conflitos e otimizar a performance.", 
+                p: ["Psicologia Aplicada", "Tomada de Decisão", "Gestão de Talentos"], 
+                i: "download (1).jpg",
+                link: "https://www.google.com/search?q=a+ciencia+das+boas+decis%C3%B5es&udm=28" 
+            },
+            { 
+                t: "A Lei da Atração", 
+                a: "Michael J. Losier", 
+                d: "O livro 'A Lei da Atração', de Michael J. Losier, ensina como aplicar métodos práticos para usar o pensamento e as emoções para atrair o que se deseja (prosperidade, amor, emprego). Ele foca em técnicas de reeducação mental, explicando que focamos energia no que queremos, em vez de focar no que não queremos.", 
+                p: ["Reeducação Mental", "Foco Positivo", "Prosperidade"], 
+                i: "download.jpg",
+                link: "https://www.google.com/search?q=a+lei+da+atra%C3%A7%C3%A3o+livro&udm=28" 
+            },
+            { 
+                t: "Inteligência Positiva", 
+                a: "Shirzad Chamine", 
+                d: "O livro 'Inteligência Positiva', de Shirzad Chamine, aborda como treinar a mente para aumentar o quociente de inteligência positiva (QP), permitindo que ela atue como aliada em vez de inimiga. A obra foca em dominar 'sabotadores' mentais (como o Crítico, Controlador, Vítima) para reduzir estresse, aumentar o desempenho e alcançar felicidade.", 
+                p: ["Domínio dos Sabotadores", "Resiliência Mental", "Alta Performance"], 
+                i: "images.webp",
+                link: "https://www.google.com/search?q=intelig%C3%AAncia+positiva+livro&udm=28" 
+            },
+            { 
+                t: "Validação: A Nova Psicologia da Influência", 
+                a: "Dra. Caroline Fleck", 
+                d: "O livro 'Validação: A Nova Psicologia da Influência', escrito pela Dra. Caroline Fleck, aborda a validação como uma habilidade essencial para construir relacionamentos mais profundos, empáticos e verdadeiros. A obra explora como reconhecer e legitimar as emoções e experiências do outro — em vez de tentar consertá-las ou ignorá-las — transforma a comunicação e fortalece vínculos.", 
+                p: ["Empatia Estratégica", "Comunicação Efetiva", "Vínculos Verdadeiros"], 
+                i: "images (2).jpg",
+                link: "https://www.google.com/search?q=valida%C3%A7%C3%A3o+a+nova+psicologia+da+influ%C3%AAncia&udm=28" 
+            }
+        ];
+
+        function openDetails(id) {
+            const l = info[id];
+            document.getElementById('detTitle').innerText = l.t;
+            document.getElementById('detAuthor').innerText = l.a;
+            document.getElementById('detDesc').innerText = l.d;
+            document.getElementById('detImg').src = l.i;
+            document.getElementById('detLink').href = l.link;
+
+            const list = document.getElementById('detPoints');
+            list.innerHTML = "";
+            l.p.forEach(item => { list.innerHTML += `<li>${item}</li>`; });
+            document.getElementById('detailsPage').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function closeDetails() {
+            document.getElementById('detailsPage').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
